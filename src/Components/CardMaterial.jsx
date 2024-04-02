@@ -7,7 +7,7 @@ import {
     Button,
 } from "@material-tailwind/react";
 
-export const CardMaterial = ({ numero, titulo, portada, resumena }) => {
+export const CardMaterial = ({ numero, titulo, portada, resumenCorto }) => {
 
     const [resumen, setResumen] = useState('');
     const obtenerContenidoArchivo = async (archivo) => {
@@ -27,7 +27,7 @@ export const CardMaterial = ({ numero, titulo, portada, resumena }) => {
     const resumenURL = `/assets/resumenes/${numero}.txt`
     const dataResumen = obtenerContenidoArchivo(resumenURL)
     return (
-        <Card className="w-full max-w-[48rem] flex-row rounded-xl">
+        <Card className="w-full max-w-[48rem] flex-row rounded-xl md:w-full">
             <CardHeader
                 shadow={false}
                 floated={false}
@@ -44,29 +44,55 @@ export const CardMaterial = ({ numero, titulo, portada, resumena }) => {
                     {titulo}
                 </Typography>
                 <Typography color="gray" className="mb-8 font-normal">
-                    {resumen}
+                    {resumenCorto}
                 </Typography>
-                <a href="#" className="inline-block mb-2">
+                {
+                    numero != 0 && (
+                        <a href={`/resumen/${numero}`} className="inline-block mb-2">
+                            <Button variant="text" className="flex items-center gap-2 p-3 bg-amber-950 text-white">
+                                Leer Resumen
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    className="h-4 w-4"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                                    />
+                                </svg>
+                            </Button>
+                        </a>
+                    )
+                }
+                {
+                    numero == 0 ? (
+                        <a href={`/resumen/${numero}`} className="inline-block mb-2">
+                            <Button variant="text" className="flex items-center gap-2 p-3 bg-amber-950 text-white">
+                                Leer Resumen
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    className="h-4 w-4"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                                    />
+                                </svg>
+                            </Button>
+                        </a>
+                    ) : (
+                <a href={`/resumen/${numero}`} className="inline-block mb-2">
                     <Button variant="text" className="flex items-center gap-2 p-3 bg-amber-950 text-white">
-                        Leer Resumen
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            className="h-4 w-4"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                            />
-                        </svg>
-                    </Button>
-                </a>
-                <a href="#" className="inline-block mb-2">
-                    <Button variant="text" className="flex items-center gap-2 p-3 bg-slate-400 text-white">
                         Capitulo Completo
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -84,24 +110,25 @@ export const CardMaterial = ({ numero, titulo, portada, resumena }) => {
                         </svg>
                     </Button>
                 </a>
-                <a href="#" className="inline-block mb-2">                    
-                <Button variant="text" className="flex items-center gap-2 p-3 bg-[#6BA3D8] text-white">
-                    Libro Completo
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        className="h-4 w-4"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                        />
-                    </svg>
-                </Button>
+                    )}
+                <a href="#" className="inline-block mb-2">
+                    <Button variant="text" className="flex items-center gap-2 p-3 bg-[#6BA3D8] text-white">
+                        Libro Completo
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            className="h-4 w-4"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                            />
+                        </svg>
+                    </Button>
                 </a>
             </CardBody>
         </Card>
