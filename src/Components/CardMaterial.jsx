@@ -7,7 +7,7 @@ import {
     Button,
 } from "@material-tailwind/react";
 
-export const CardMaterial = ({ numero, titulo, portada, resumenCorto }) => {
+export const CardMaterial = ({ numero, titulo, linkLibro, link, resumenCorto }) => {
 
     const [resumen, setResumen] = useState('');
     const obtenerContenidoArchivo = async (archivo) => {
@@ -27,16 +27,16 @@ export const CardMaterial = ({ numero, titulo, portada, resumenCorto }) => {
     const resumenURL = `/assets/resumenes/${numero}.txt`
     const dataResumen = obtenerContenidoArchivo(resumenURL)
     return (
-        <Card className="w-full max-w-[48rem] flex-row rounded-xl md:w-full">
+        <Card className="w-full max-w-[48rem] md:flex-row rounded-xl md:w-full flex flex-col">
             <CardHeader
                 shadow={false}
                 floated={false}
-                className="m-0 w-2/5 shrink-0 rounded-r-none"
+                className="m-0 w-full md:w-2/5 shrink-0 rounded-r-lg"
             >
                 <img
                     src={portadaURL}
                     alt="card-image"
-                    className="h-full w-full object-cover"
+                    className="md:h-full w-full object-cover"
                 />
             </CardHeader>
             <CardBody>
@@ -91,7 +91,7 @@ export const CardMaterial = ({ numero, titulo, portada, resumenCorto }) => {
                             </Button>
                         </a>
                     ) : (
-                <a href={`/resumen/${numero}`} className="inline-block mb-2">
+                <a href={link} className="inline-block mb-2" target='_blank'>
                     <Button variant="text" className="flex items-center gap-2 p-3 bg-amber-950 text-white">
                         Capitulo Completo
                         <svg
@@ -111,7 +111,7 @@ export const CardMaterial = ({ numero, titulo, portada, resumenCorto }) => {
                     </Button>
                 </a>
                     )}
-                <a href="#" className="inline-block mb-2">
+                <a href={ linkLibro } className="inline-block mb-2" target='_blank'>
                     <Button variant="text" className="flex items-center gap-2 p-3 bg-[#6BA3D8] text-white">
                         Libro Completo
                         <svg

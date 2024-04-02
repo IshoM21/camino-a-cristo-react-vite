@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getDataByNumber } from "../helpers/getDataByNumber";
 import { Button } from "@material-tailwind/react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 export const CardResumen = () => {
 
@@ -22,7 +22,7 @@ export const CardResumen = () => {
         }
     };
     const capitulo = getDataByNumber(capNumero);
-    
+
     const portadaURL = `/assets/portadas/${capNumero}.jpg`
     const resumenURL = `/assets/resumenes/${capNumero}.txt`
     obtenerContenidoArchivo(resumenURL)
@@ -52,8 +52,9 @@ export const CardResumen = () => {
                             {/* Contenido de la tercera sección */}
                             <p className="text-gray-700">{resumenLargo}</p>
                             <div className="flex flex-col lg:flex-row lg:justify-evenly justify-center items-center mt-5 lg:mt-2">
-                                <a href={`/#`} className="inline-block mb-2 w-full">
-                                    <Button variant="text" className="flex  justify-center items-center gap-2 p-3 md:p-2 bg-slate-400 text-white w-full md:w-fit lg:w-fit">
+                                {/* <a href={`/#`} className="inline-block mb-2 w-full"> */}
+                                <NavLink to='/' className="inline-block mb-2 w-full">
+                                    <Button variant="text" className="flex justify-center items-center gap-2 p-3 md:p-2 bg-slate-400 text-white w-full md:w-fit lg:w-fit">
                                         Capitulo Completo
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -70,9 +71,11 @@ export const CardResumen = () => {
                                             />
                                         </svg>
                                     </Button>
-                                </a>
+                                    {/* </a> */}
+                                </NavLink>
 
-                                <a href={`/listado`} className="inline-block mb-2 w-full">
+                                {/* <a href={`/listado`} className="inline-block mb-2 w-full"> */}
+                                <NavLink to='/' className="inline-block mb-2 w-full">
                                     <Button variant="text" className="flex justify-center items-center gap-2 p-3 md:p-2 bg-slate-400 text-white w-full md:w-fit lg:w-fit">
                                         Menu Principal
                                         <svg
@@ -95,8 +98,10 @@ export const CardResumen = () => {
                                             />
                                         </svg>
                                     </Button>
-                                </a>
-                                <a href="#" className="inline-block mb-2 w-full">
+                                    {/* </a> */}
+                                </NavLink>
+                                <NavLink to='/listado' className="inline-block mb-2 w-full">
+                                {/* <a href="#" className="inline-block mb-2 w-full"> */}
                                     <Button variant="text" className="flex justify-center items-center gap-2 p-3 md:p-2 bg-[#6BA3D8] text-white w-full md:w-fit lg:w-fit">
                                         Libro Completo
                                         <svg
@@ -114,7 +119,8 @@ export const CardResumen = () => {
                                             />
                                         </svg>
                                     </Button>
-                                </a>
+                                {/* </a> */}
+                                </NavLink>
                             </div>
                         </div>
                     </div>
