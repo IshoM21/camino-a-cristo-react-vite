@@ -22,6 +22,7 @@ export const CardResumen = () => {
         }
     };
     const capitulo = getDataByNumber(capNumero);
+    console.log(capitulo);
 
     const portadaURL = `/assets/portadas/${capNumero}.jpg`
     const resumenURL = `/assets/resumenes/${capNumero}.txt`
@@ -52,8 +53,8 @@ export const CardResumen = () => {
                             {/* Contenido de la tercera sección */}
                             <p className="text-gray-700">{resumenLargo}</p>
                             <div className="flex flex-col lg:flex-row lg:justify-evenly justify-center items-center mt-5 lg:mt-2">
-                                {/* <a href={`/#`} className="inline-block mb-2 w-full"> */}
-                                <NavLink to='/' className="inline-block mb-2 w-full">
+                                <a href={capitulo[0].link} className="inline-block mb-2 w-full" target="_blank">
+                                
                                     <Button variant="text" className="flex justify-center items-center gap-2 p-3 md:p-2 bg-slate-400 text-white w-full md:w-fit lg:w-fit">
                                         Capitulo Completo
                                         <svg
@@ -67,12 +68,12 @@ export const CardResumen = () => {
                                             <path
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                                             />
                                         </svg>
                                     </Button>
-                                    {/* </a> */}
-                                </NavLink>
+                                    </a>
+                                
 
                                 {/* <a href={`/listado`} className="inline-block mb-2 w-full"> */}
                                 <NavLink to='/' className="inline-block mb-2 w-full">
@@ -100,8 +101,8 @@ export const CardResumen = () => {
                                     </Button>
                                     {/* </a> */}
                                 </NavLink>
-                                <NavLink to='/listado' className="inline-block mb-2 w-full">
-                                {/* <a href="#" className="inline-block mb-2 w-full"> */}
+                                
+                                <a href={ capitulo[0].linkLibro } className="inline-block mb-2 w-full" target="_blank">
                                     <Button variant="text" className="flex justify-center items-center gap-2 p-3 md:p-2 bg-[#6BA3D8] text-white w-full md:w-fit lg:w-fit">
                                         Libro Completo
                                         <svg
@@ -119,8 +120,8 @@ export const CardResumen = () => {
                                             />
                                         </svg>
                                     </Button>
-                                {/* </a> */}
-                                </NavLink>
+                                </a>
+
                             </div>
                         </div>
                     </div>
