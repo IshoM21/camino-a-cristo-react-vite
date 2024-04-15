@@ -48,7 +48,7 @@ export const CardMaterial = ({ numero, titulo, linkLibro, link, resumenCorto }) 
                 </Typography>
                 {
                     numero != 0 && (
-                        <a href={`/resumen/${numero}`} className="inline-block mb-2">
+                        <a href={`/resumen/${numero}`} className="inline-block mb-2  mr-2">
                             <Button variant="text" className="flex items-center gap-2 p-3 bg-amber-950 text-white">
                                 Leer Resumen
                                 <svg
@@ -71,7 +71,7 @@ export const CardMaterial = ({ numero, titulo, linkLibro, link, resumenCorto }) 
                 }
                 {
                     numero == 0 ? (
-                        <a href={`/resumen/${numero}`} className="inline-block mb-2">
+                        <a href={`/resumen/${numero}`} className="inline-block mb-2 mr-2">
                             <Button variant="text" className="flex items-center gap-2 p-3 bg-amber-950 text-white">
                                 Leer Resumen
                                 <svg
